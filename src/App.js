@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import Joke from './components/Joke'
+import jokesdata from './Jokesdata'
 function App() {
+
+  
+   let d =    jokesdata.map( function(data) {
+         return <Joke key = {data.id} question = {data.question } punchline = {data.punchline}></Joke>
+      } );
+
+      let arr = [1,2,3,4,5,6,7,8,9,10];
+      let a = arr.filter(function(data)
+      {
+        return data%2==0;
+      })
+      console.log(a)
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    
+      <div>
+        {d}
+      </div>
+    
+  )
 }
 
 export default App;
