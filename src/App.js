@@ -6,9 +6,9 @@ class App extends Component {
   state = {
     counters :[
       {id:1, value:0},
-      {id:2, value:2},
-      {id:3, value:3},
-      {id:4, value:34}
+      {id:2, value:0},
+      {id:3, value:0},
+      {id:4, value:0}
     ]
 };
 handleReset = () =>{
@@ -33,6 +33,15 @@ handleIncrement = (counter) => {
   })
   this.setState({counters})
 }
+handleDecrement = (counter) =>{
+  if(counter.value === 0) return;
+   const counters = this.state.counters.map(c => {
+     if(c.id === counter.id)
+     c.value = counter.value - 1;
+     return c;
+   })
+   this.setState({counters: counters})
+}
 handleDelete = (id) =>
 {
   console.log(id)
@@ -45,7 +54,7 @@ handleDelete = (id) =>
         <Navbar totalCounters = {this.state.counters.filter( c => c.value > 0).length}></Navbar>
       <main className="container">
         <Counters onReset = {this.handleReset} onIncrement = {this.handleIncrement} 
-        onDelete = {this.handleDelete} counters = {this.state.counters}/>
+        onDecrement = {this.handleDecrement} onDelete = {this.handleDelete} counters = {this.state.counters}/>
       </main>
       </div>
     );
