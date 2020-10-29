@@ -50,6 +50,14 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
+module.exports = {
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      // ...
+    ]
+  }
+};
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -79,6 +87,7 @@ module.exports = function(webpackEnv) {
           ? { publicPath: '../../' }
           : {},
       },
+     
       {
         loader: require.resolve('css-loader'),
         options: {
